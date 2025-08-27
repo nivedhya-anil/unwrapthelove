@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unmatched Hearts, Unforgettable Love</title>
+  <style>
+    :root{
+      --gap: 2800;
+      --popup-w: 320px;
+      --popup-h: 240px;
+    }
+    body{margin:0;font-family:system-ui,Arial,sans-serif;background:#93a06b;color:#111;overflow:hidden;height:100vh;display:flex;flex-direction:column;}
+    .wrap{position:relative;flex:1;display:flex;justify-content:center;align-items:center;background:#93a06b;overflow:hidden;}
+    .overlay{position:relative;width:100%;height:100%;}
+    .marker{position:absolute;transform:translate(-50%, -100%);display:flex;align-items:center;gap:.7rem;z-index:5;}
+    .pin{width:30px;height:30px;filter:drop-shadow(0 6px 10px rgba(0,0,0,.25));}
+    .popup{position:absolute;left:50%;top:-12px;transform:translateX(-50%) scale(.7);width:min(var(--popup-w), 86vw);background:#fff;border-radius:18px;padding:10px;border:2px solid #111;box-shadow:0 18px 35px rgba(0,0,0,.25);opacity:0;pointer-events:none;transform-origin: bottom center;transition: transform .55s cubic-bezier(.2,.8,.2,1), opacity .55s ease;}
+    /* Change image size here */
+    .popup img{width:150px;height:auto;max-width:100%;display:block;margin:0 auto;border-radius:12px}
+    .caption{padding:6px 6px 2px;font-weight:700;text-align:center;font-size:14px}
+    .quote{font-style:italic;font-size:13px;line-height:1.35;color:#5c3d00;text-align:center;margin-top:4px;padding:0 8px;}
+    .marker.show .popup{opacity:1;transform:translateX(-50%) scale(1);pointer-events:auto}
+    .marker.show .pin{animation:pulse .9s ease}
+    @keyframes pulse{0%{transform:scale(1)}60%{transform:scale(1.18)}100%{transform:scale(1)}}
+    @media (max-width:700px){:root{ --popup-w: 260px; --popup-h: 200px } .pin{width:26px;height:26px}}
+    .controls{display:flex;gap:1rem;justify-content:center;margin:14px auto 20px}
+    .btn{
+      background:linear-gradient(135deg, #ff758c, #ff7eb3);
+      color:#fff;
+      border:none;
+      border-radius:50px;
+      padding:12px 24px;
+      font-weight:700;
+      cursor:pointer;
+      font-size:1rem;
+      box-shadow:0 6px 15px rgba(255,118,150,0.5);
+      transition:all 0.3s ease;
+    }
+    .btn:hover{
+      transform:translateY(-2px) scale(1.05);
+      box-shadow:0 10px 20px rgba(255,118,150,0.7);
+    }
+    .btn:disabled{
+      opacity:.6;cursor:not-allowed;transform:none;box-shadow:0 6px 15px rgba(255,118,150,0.5);
+    }
+    header{text-align:center;color:#fff;padding:5px;font-size:1.5rem;font-weight:700;}
+    footer{max-width:800px;margin:3px auto 20px;text-align:center;color:#fff;font-style:italic;font-size:1rem;}
+  </style>
+</head>
+<body>
+  <header>Unmatched Hearts, Unforgettable Love</header>
+  <div class="wrap" id="scene">
+    <div class="overlay" id="overlay">
+      <div class="marker" style="left:18%; top:72%" data-delay="0">
+        <svg class="pin" viewBox="0 0 32 32"><path fill="#ff3b30" d="M16 2C9.9 2 5 6.9 5 13c0 8.1 9 16.9 10.1 17.9.5.5 1.3.5 1.8 0C18 29.9 27 21.1 27 13c0-6.1-4.9-11-11-11z"/><circle cx="16" cy="13" r="5" fill="#fff"/></svg>
+        <div class="popup">
+          <img src="matrimony.jpg" alt="First Spark" />
+          <div class="caption">First Spark</div>
+          <div class="quote">"A request on a matrimony site. Simple. Sweet. Unexpected."</div>
+        </div>
+      </div>
+      <div class="marker" style="left:35%; top:52%" data-delay="1">
+        <svg class="pin" viewBox="0 0 32 32"><path fill="#ffcc00" d="M16 2C9.9 2 5 6.9 5 13c0 8.1 9 16.9 10.1 17.9.5.5 1.3.5 1.8 0C18 29.9 27 21.1 27 13c0-6.1-4.9-11-11-11z"/><circle cx="16" cy="13" r="5" fill="#fff"/></svg>
+        <div class="popup">
+          <img src="paused.png" alt="The Twist" />
+          <div class="caption">The Twist</div>
+          <div class="quote">"Conversations bloomed... but the chapter paused."</div>
+        </div>
+      </div>
+      <div class="marker" style="left:53%; top:32%" data-delay="2">
+        <svg class="pin" viewBox="0 0 32 32"><path fill="#34c759" d="M16 2C9.9 2 5 6.9 5 13c0 8.1 9 16.9 10.1 17.9.5.5 1.3.5 1.8 0C18 29.9 27 21.1 27 13c0-6.1-4.9-11-11-11z"/><circle cx="16" cy="13" r="5" fill="#fff"/></svg>
+        <div class="popup">
+          <img src="again.jpg" alt="The Comeback" />
+          <div class="caption">The Comeback</div>
+          <div class="quote">"Then came a message. Not just words — but a second chance."</div>
+        </div>
+      </div>
+      <div class="marker" style="left:70%; top:46%" data-delay="3">
+        <svg class="pin" viewBox="0 0 32 32"><path fill="#5856d6" d="M16 2C9.9 2 5 6.9 5 13c0 8.1 9 16.9 10.1 17.9.5.5 1.3.5 1.8 0C18 29.9 27 21.1 27 13c0-6.1-4.9-11-11-11z"/><circle cx="16" cy="13" r="5" fill="#fff"/></svg>
+        <div class="popup">
+          <img src="fixed.jpg" alt="Saying Yes, for Forever" />
+          <div class="caption">Saying Yes, for Forever</div>
+          <div class="quote">"This time, it felt right. Not rushed. Not unsure. Just love."</div>
+        </div>
+      </div>
+      <div class="marker" style="left:86%; top:18%" data-delay="4">
+        <svg class="pin" viewBox="0 0 32 32"><path fill="#ff2d55" d="M16 2C9.9 2 5 6.9 5 13c0 8.1 9 16.9 10.1 17.9.5.5 1.3.5 1.8 0C18 29.9 27 21.1 27 13c0-6.1-4.9-11-11-11z"/><circle cx="16" cy="13" r="5" fill="#fff"/></svg>
+        <div class="popup">
+          <img src="forever.jpg" alt="Together Always" />
+          <div class="caption">Together Always</div>
+          <div class="quote">"They chose forever — not because it was perfect, but because it was real."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="controls">
+    <button class="btn" id="play">❤ Play Love Story</button>
+    <button class="btn" id="reset">💫 Reset Journey</button>
+  </div>
+  <footer>“The best love stories don’t follow the rules. They write their own.”</footer>
+  <script>
+    const markers = Array.from(document.querySelectorAll('.marker'));
+    const playBtn = document.getElementById('play');
+    const resetBtn = document.getElementById('reset');
+    let timers = [];
+    function play(){clearTimers();markers.forEach(m => m.classList.remove('show'));playBtn.disabled = true;markers.forEach(m => {const delaySteps = Number(m.dataset.delay || 0);const t = setTimeout(() => {m.classList.add('show');if (delaySteps === markers.length - 1) playBtn.disabled = false;}, delaySteps * Number(getComputedStyle(document.documentElement).getPropertyValue('--gap')));timers.push(t);});}
+    function reset(){clearTimers();markers.forEach(m => m.classList.remove('show'));playBtn.disabled = false;}
+    function clearTimers(){timers.forEach(t => clearTimeout(t));timers = [];}
+    window.addEventListener('load', play);
+    playBtn.addEventListener('click', play);
+    resetBtn.addEventListener('click', reset);
+    document.getElementById('overlay').addEventListener('click', (e)=>{const marker = e.target.closest('.marker');if(marker){ marker.classList.toggle('show'); }});
+  </script>
+</body>
+</html>
